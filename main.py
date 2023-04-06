@@ -66,34 +66,34 @@ def main(page):
     def add_new_video(e):
         url_video = new_video.value
         # print(url_video)
-        if (not url_video and len(url_video) > 0):
-            print("teste"+url_video)
-            download = Download()
-            download.baixarVideo(url_video)
-            page.add(ft.Checkbox(label=new_video.value))
-            new_video.value = ""
-            new_video.focus()
-            new_video.update()
+        # if (not url_video and len(url_video) > 0):
+        # print("teste"+url_video)
+        download = Download()
+        download.baixarVideo(url_video)
+        page.add(ft.Checkbox(label=new_video.value))
+        new_video.value = ""
+        new_video.focus()
+        new_video.update()
         
     
     def add_new_playlist(e):
         url_playlist = new_playlist.value        
-        if (not url_playlist and len(url_playlist) > 0):
-            download = Download()
-            download.baixarPlaylist(url_playlist)
-            page.add(ft.Checkbox(label=new_playlist.value))
-            new_playlist.value = ""
-            new_playlist.focus()
-            new_playlist.update()
+        # if (not url_playlist and len(url_playlist) > 0):
+        download = Download()
+        download.baixarPlaylist(url_playlist)
+        page.add(ft.Checkbox(label=new_playlist.value))
+        new_playlist.value = ""
+        new_playlist.focus()
+        new_playlist.update()
 
     def export_playlist(e):
         url_playlist = new_playlist.value
-        if (not url_playlist and len(url_playlist) > 0):
-            download = Download()
-            download.gerarLinksMarkdown(url_playlist)
-            new_playlist.value = ""
-            new_playlist.focus()
-            new_playlist.update()
+        # if (not url_playlist and len(url_playlist) > 0):
+        download = Download()
+        download.gerarLinksMarkdown(url_playlist)
+        new_playlist.value = ""
+        new_playlist.focus()
+        new_playlist.update()
 
 
     def add_new_audio(e):
