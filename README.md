@@ -1,9 +1,9 @@
-# youtube-download
+# Youtube Downloader
 
 
-Download simples de vídeos e playlists do YouTube usando a biblioteca [PyTube](https://github.com/nficano/pytube)
+Aplicativo em Python e Flet para Download de vídeos e playlists do YouTube usando a biblioteca [PyTube](https://github.com/nficano/pytube)
 
-```python
+<!-- ```python
 pyinstaller -D -F -n main -c "main.py"
 ```
 
@@ -13,4 +13,4 @@ cd /dist
 
 ```bash
 ./main
-```
+``` -->
