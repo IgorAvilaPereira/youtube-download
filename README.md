@@ -6,7 +6,8 @@ Aplicativo em Python e Flet para Download de vídeos e playlists do YouTube usan
 ## Instalação
 
 ```python
-pip install -r requirements.txt
+sudo pip install flet
+sudo pip install -r requirements.txt
 ```
 
 ## Execução
