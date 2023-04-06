@@ -7,7 +7,7 @@ from os import path
 
 # pip install pydub
 # apt-get install ffmpeg      
-from pydub import AudioSegment                                                           
+# from pydub import AudioSegment                                                           
 # src = "transcript.mp3"
 # dst = "test.wav"
 # convert wav to mp3                                                            
@@ -15,20 +15,20 @@ from pydub import AudioSegment
 # sound.export(dst, format="wav")
 
 # pip install SpeechRecognition
-import speech_recognition as sr
+# import speech_recognition as sr
 
-class AudioToText: 
-    def __init__(self, audio):      
-        r = sr.Recognizer()
-        with sr.AudioFile(audio) as source:  
-            audio_text = r.listen(source)        
-            try:           
-                text = r.recognize_google(audio_text, language = "pt-BR")
-                print('convertendo audio para texto ...')
-                # print(text)            
-                self.text = text
-            except:
-                print('Desculpe.. execute novamente...')
+# class AudioToText: 
+#     def __init__(self, audio):      
+#         r = sr.Recognizer()
+#         with sr.AudioFile(audio) as source:  
+#             audio_text = r.listen(source)        
+#             try:           
+#                 text = r.recognize_google(audio_text, language = "pt-BR")
+#                 print('convertendo audio para texto ...')
+#                 # print(text)            
+#                 self.text = text
+#             except:
+#                 print('Desculpe.. execute novamente...')
 
 def main(page):
     # page.window_title = "Youtube Downloader "
@@ -105,22 +105,24 @@ def main(page):
             new_audio.value = ""
             new_audio.focus()
             new_audio.update()
-
-    def export_to_text(e):
-        url_audio = new_audio.value
-        # if (not url_audio and len(url_audio) > 0):
-        download = Download()
-        file = download.baixarAudio(url_audio)
-        page.add(ft.Checkbox(label=new_video.value))
-        new_audio.value = ""
-        new_audio.focus()
-        new_audio.update()            
-        src = file
-        dst = file.replace(".mp3", ".wav")
-        sound = AudioSegment.from_mp3(src)
-        sound.export(dst, format="wav")            
-        audioToText = AudioToText(dst)
-        print(audioToText.text)
+    # bug
+    # def export_to_text(e):
+    #     url_audio = new_audio.value
+    #     # if (not url_audio and len(url_audio) > 0):
+    #     download = Download()
+    #     file = download.baixarAudio(url_audio)
+    #     page.add(ft.Checkbox(label=new_video.value))
+    #     new_audio.value = ""
+    #     new_audio.focus()
+    #     new_audio.update()            
+    #     src = file
+    #     print(src)
+    #     dst = file.replace(".mp3", ".wav")
+    #     print(dst)
+    #     sound = AudioSegment.from_mp3(src)
+    #     sound.export(dst, format="wav")            
+    #     audioToText = AudioToText(dst)
+    #     print(audioToText.text)
 
     new_video = ft.TextField(hint_text="Youtube Video URL?", width=200)
     page.add(ft.Row([new_video, ft.ElevatedButton("Download Video", on_click=add_new_video)]))
@@ -129,8 +131,8 @@ def main(page):
     page.add(ft.Row([new_playlist, ft.ElevatedButton("Download Playlist", on_click=add_new_playlist), ft.ElevatedButton("Export Playlist to Markdown", on_click=export_playlist)]))
 
     new_audio = ft.TextField(hint_text="Youtube Video URL?", width=200)
-    page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.ElevatedButton("Export Video to Text (Pt-br)", on_click=export_to_text)]))
-    # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio)]))
+    # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.ElevatedButton("Export Video to Text (Pt-br)", on_click=export_to_text)]))
+    page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio)]))
 
     page.add(ft.FilledButton(text="Open Video Folder", on_click=open_video_folder), 
         ft.FilledButton(text="Open Playlist Folder", on_click=open_playlist_folder),
