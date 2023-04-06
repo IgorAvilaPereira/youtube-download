@@ -34,6 +34,7 @@ class Download:
         base, ext = os.path.splitext(out_file)
         new_file = base + '.mp3'
         os.rename(out_file, new_file)
+        return new_file
 
     def gerarLinksMarkdown(self, url_playlist):
         f = open("playlist.md", "w")
