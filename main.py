@@ -4,6 +4,7 @@ import os
 import platform
 import subprocess
 from os import path
+# import time
 
 # pip install pydub
 # apt-get install ffmpeg      
@@ -124,13 +125,15 @@ def main(page):
     #     new_audio.value = ""
     #     new_audio.focus()
     #     new_audio.update()            
-    #     src = file
-    #     print(src)
-    #     dst = file.replace(".mp3", ".wav")
-    #     print(dst)
-    #     sound = AudioSegment.from_mp3(src)
-    #     sound.export(dst, format="wav")            
-    #     audioToText = AudioToText(dst)
+    #     # src = file
+    #     # print(src)
+    #     # dst = file.replace(".mp3", ".wav")
+    #     # print(dst)
+    #     # sound = AudioSegment.from_mp3(src)
+    #     # sound.export(dst, format="wav")    
+    #     print(file)
+    #     time.sleep(30)
+    #     audioToText = AudioToText(file)
     #     print(audioToText.text)
 
     new_video = ft.TextField(hint_text="Youtube Video URL?", width=200)
