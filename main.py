@@ -68,32 +68,40 @@ def main(page):
         # print(url_video)
         # if (not url_video and len(url_video) > 0):
         # print("teste"+url_video)
-        download = Download()
-        download.baixarVideo(url_video)
-        page.add(ft.Checkbox(label=new_video.value))
-        new_video.value = ""
-        new_video.focus()
-        new_video.update()
-        
+        try:
+            download = Download()
+            download.baixarVideo(url_video)
+            page.add(ft.Checkbox(label=new_video.value))
+            new_video.value = ""
+            new_video.focus()
+            new_video.update()
+        except:
+            print("incorrect url!")
     
     def add_new_playlist(e):
-        url_playlist = new_playlist.value        
-        # if (not url_playlist and len(url_playlist) > 0):
-        download = Download()
-        download.baixarPlaylist(url_playlist)
-        page.add(ft.Checkbox(label=new_playlist.value))
-        new_playlist.value = ""
-        new_playlist.focus()
-        new_playlist.update()
+        url_playlist = new_playlist.value       
+        try: 
+            # if (not url_playlist and len(url_playlist) > 0):
+            download = Download()
+            download.baixarPlaylist(url_playlist)
+            page.add(ft.Checkbox(label=new_playlist.value))
+            new_playlist.value = ""
+            new_playlist.focus()
+            new_playlist.update()
+        except:
+            print("incorrect url!")
 
     def export_playlist(e):
         url_playlist = new_playlist.value
-        # if (not url_playlist and len(url_playlist) > 0):
-        download = Download()
-        download.gerarLinksMarkdown(url_playlist)
-        new_playlist.value = ""
-        new_playlist.focus()
-        new_playlist.update()
+        try: 
+            # if (not url_playlist and len(url_playlist) > 0):
+            download = Download()
+            download.gerarLinksMarkdown(url_playlist)
+            new_playlist.value = ""
+            new_playlist.focus()
+            new_playlist.update()
+        except:
+            print("incorrect url!")
 
 
     def add_new_audio(e):
