@@ -39,7 +39,6 @@ def main(page):
     page.window_resizable = False  # window is not resizable
     pb = ft.ProgressBar(width=400)
     pb.value = 0
-    # sleep(0.1)
     page.update()
 
     def open_video_folder(e):                
