@@ -17,7 +17,7 @@ class Download:
             size = self.video.filesize        
         except:
             size = self.audio.filesize        
-            
+
         self.pb.value = str(((size - bytes_remaining) / size))        
         self.page.update()
         progress = int(((size - bytes_remaining) / size) * 100)        
@@ -74,13 +74,4 @@ class Download:
             conteudo = conteudo + "* ["+url_video+"] \n\n"
         f.write(conteudo)      
         f.close()
-
-# if __name__ == '__main__':    
-#     download = Download()
-#     url_playlist = "https://youtube.com/playlist?list=PLvT8P1q6jMWfsGSRD3MP8cuR_gnsDD59F"
-#     download.gerarLinksMarkdown(url_playlist)
-#     # download.baixarPlaylist(url_playlist)
-#     # url_playlist = "https://youtube.com/playlist?list=PLvT8P1q6jMWfdK6v25Sjhq3qwxLIAnvtk"
-#     # download.baixarPlaylist(url_playlist)
-
     
