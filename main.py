@@ -89,6 +89,10 @@ def main(page):
         # try: 
             # if (not url_playlist and len(url_playlist) > 0):
         download = Download()
+        pb.value = 0 
+        page.update()
+        download.page = page
+        download.pb = pb
         download.baixarPlaylist(url_playlist)
         # page.add(ft.Checkbox(label=new_playlist.value))
         new_playlist.value = ""
@@ -102,6 +106,10 @@ def main(page):
         # try: 
             # if (not url_playlist and len(url_playlist) > 0):
         download = Download()
+        pb.value = 0 
+        page.update()
+        download.page = page
+        download.pb = pb
         download.gerarLinksMarkdown(url_playlist)
         new_playlist.value = ""
         new_playlist.focus()

@@ -47,7 +47,7 @@ class Download:
         self.page.add(caixaTexto)
         for url_video in playlist:
             yt = YouTube(url_video)
-            caixaTexto.value = ft.Text("1/"+str(playlist.length), size=10)
+            caixaTexto.value = url_video
             self.page.update()
             self.pb.value = 0 
             self.page.update()
