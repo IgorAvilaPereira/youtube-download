@@ -41,11 +41,15 @@ class Download:
 
     def baixarPlaylist(self, url_playlist) :                
         playlist = Playlist(url_playlist)        
+        # playlist.register_on_progress_callback(self.progress_callback)
+        # playlist.register_on_complete_callback(self.complete_callback)    
         caixaTexto = ft.Text("", size=10)
         self.page.add(caixaTexto)
         for url_video in playlist:
             yt = YouTube(url_video)
             caixaTexto.value = ft.Text("1/"+str(playlist.length), size=10)
+            self.page.update()
+            self.pb.value = 0 
             self.page.update()
             yt.register_on_progress_callback(self.progress_callback)
             yt.register_on_complete_callback(self.complete_callback)    
