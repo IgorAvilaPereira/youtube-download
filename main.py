@@ -5,6 +5,7 @@ import platform
 import subprocess
 from os import path
 # import time
+from time import sleep
 
 # pip install pydub
 # apt-get install ffmpeg      
@@ -34,8 +35,12 @@ from os import path
 def main(page):
     # page.window_title = "Youtube Downloader "
     page.window_width = 600        # window's width is 200 px
-    page.window_height = 400       # window's height is 200 px
+    page.window_height = 600      # window's height is 200 px
     page.window_resizable = False  # window is not resizable
+    pb = ft.ProgressBar(width=400)
+    pb.value = 0
+    # sleep(0.1)
+    page.update()
 
     def open_video_folder(e):                
         path = "./video"    
@@ -66,51 +71,54 @@ def main(page):
 
     def add_new_video(e):
         url_video = new_video.value
-        # print(url_video)
-        # if (not url_video and len(url_video) > 0):
-        # print("teste"+url_video)
-        try:
-            download = Download()
-            download.baixarVideo(url_video)
-            page.add(ft.Checkbox(label=new_video.value))
-            new_video.value = ""
-            new_video.focus()
-            new_video.update()
-        except:
-            print("incorrect url!")
+        download = Download()        
+        pb.value = 0 
+        page.update()
+        download.page = page
+        download.pb = pb
+        download.baixarVideo(url_video)
+        # page.add(ft.Checkbox(label=new_video.value))
+        new_video.value = ""
+        new_video.focus()
+        new_video.update()
+        # except:
+        #   print("incorrect url!")
     
     def add_new_playlist(e):
         url_playlist = new_playlist.value       
-        try: 
+        # try: 
             # if (not url_playlist and len(url_playlist) > 0):
-            download = Download()
-            download.baixarPlaylist(url_playlist)
-            page.add(ft.Checkbox(label=new_playlist.value))
-            new_playlist.value = ""
-            new_playlist.focus()
-            new_playlist.update()
-        except:
-            print("incorrect url!")
+        download = Download()
+        download.baixarPlaylist(url_playlist)
+        # page.add(ft.Checkbox(label=new_playlist.value))
+        new_playlist.value = ""
+        new_playlist.focus()
+        new_playlist.update()
+        # except:
+        # print("incorrect url!")
 
     def export_playlist(e):
         url_playlist = new_playlist.value
-        try: 
+        # try: 
             # if (not url_playlist and len(url_playlist) > 0):
-            download = Download()
-            download.gerarLinksMarkdown(url_playlist)
-            new_playlist.value = ""
-            new_playlist.focus()
-            new_playlist.update()
-        except:
-            print("incorrect url!")
+        download = Download()
+        download.gerarLinksMarkdown(url_playlist)
+        new_playlist.value = ""
+        new_playlist.focus()
+        new_playlist.update()
+        # except:
+        #   print("incorrect url!")
 
 
     def add_new_audio(e):
         url_audio = new_audio.value
-        # if (not url_audio and len(url_audio) > 0):
         download = Download()
+        pb.value = 0 
+        page.update()
+        download.page = page
+        download.pb = pb
         download.baixarAudio(url_audio)
-        page.add(ft.Checkbox(label=new_video.value))
+        # page.add(ft.Checkbox(label=new_video.value))
         new_audio.value = ""
         new_audio.focus()
         new_audio.update()
@@ -150,5 +158,10 @@ def main(page):
         ft.FilledButton(text="Open Playlist Folder", on_click=open_playlist_folder),
         ft.FilledButton(text="Open Audio Folder", on_click=open_audio_folder)
     )
+    
+    page.add(        
+        ft.Column([ ft.Text("Progress..."), pb])        
+    )
+    
 
 ft.app(target=main)
