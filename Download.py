@@ -16,8 +16,7 @@ class Download:
         try:
             size = self.video.filesize        
         except:
-            size = self.audio.filesize        
-
+            size = self.audio.filesize
         self.pb.value = str(((size - bytes_remaining) / size))        
         self.page.update()
         progress = int(((size - bytes_remaining) / size) * 100)        
