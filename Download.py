@@ -17,7 +17,8 @@ class Download:
             size = self.video.filesize        
         except:
             size = self.audio.filesize
-        self.pb.value = (size - bytes_remaining) / size        
+        self.pb.value = ((size - bytes_remaining) / size)       
+        # print(((size - bytes_remaining) / size))
         self.page.update()
         progress = int(((size - bytes_remaining) / size) * 100)        
         print(str(progress) + "%") 
@@ -39,9 +40,7 @@ class Download:
         self.video.download(output_path='video')
 
     def baixarPlaylist(self, url_playlist) :                
-        playlist = Playlist(url_playlist)        
-        # playlist.register_on_progress_callback(self.progress_callback)
-        # playlist.register_on_complete_callback(self.complete_callback)    
+        playlist = Playlist(url_playlist)
         caixaTexto = ft.Text("", size=10)
         self.page.add(caixaTexto)
         for url_video in playlist:
