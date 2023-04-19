@@ -72,8 +72,10 @@ def main(page):
     def add_new_video(e):
         url_video = new_video.value
         download = Download()        
+        text.value = "Progress..."        
         pb.value = 0 
         page.update()
+        download.text = text
         download.page = page
         download.pb = pb
         download.baixarVideo(url_video)
@@ -89,8 +91,10 @@ def main(page):
         # try: 
             # if (not url_playlist and len(url_playlist) > 0):
         download = Download()
+        text.value = "Progress..."        
         pb.value = 0 
         page.update()
+        download.text = text
         download.page = page
         download.pb = pb
         download.baixarPlaylist(url_playlist)
@@ -106,8 +110,10 @@ def main(page):
         # try: 
             # if (not url_playlist and len(url_playlist) > 0):
         download = Download()
+        # text.value = "Progress..."        
         pb.value = 0 
         page.update()
+        # download.text = text
         download.page = page
         download.pb = pb
         download.gerarLinksMarkdown(url_playlist)
@@ -120,9 +126,11 @@ def main(page):
 
     def add_new_audio(e):
         url_audio = new_video.value
+        # text.value = "Progress..."        
         download = Download()
         pb.value = 0 
         page.update()
+        # download.text = text
         download.page = page
         download.pb = pb
         download.baixarAudio(url_audio)
@@ -162,6 +170,7 @@ def main(page):
     #     page.update()
 
     text = ft.Text("Progress...")    
+
     page.add(        
         ft.Column([text, pb])        
     )

@@ -28,6 +28,7 @@ class Download:
 
     def complete_callback(self, stream, file_handle):
         print("Download Completed")
+        # self.text.value = "Download Completed"
         self.pb.value = 1
         self.page.update()
         # self.page.add(ft.Text("Download Completed", size=10))
