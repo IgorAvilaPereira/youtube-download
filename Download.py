@@ -36,13 +36,16 @@ class Download:
         return "100%"
 
     def baixarVideo(self, url_video):
-        yt = YouTube(url_video)     
-        self.pb.value = 0  
-        self.page.update()         
-        yt.register_on_progress_callback(self.progress_callback)
-        yt.register_on_complete_callback(self.complete_callback)    
-        self.video = yt.streams.get_highest_resolution()        
-        self.video.download(output_path='video')
+        try:
+            yt = YouTube(url_video)     
+            self.pb.value = 0  
+            self.page.update()         
+            yt.register_on_progress_callback(self.progress_callback)
+            yt.register_on_complete_callback(self.complete_callback)    
+            self.video = yt.streams.get_highest_resolution()        
+            self.video.download(output_path='video')
+        except:
+            print("url invalida")
 
     def baixarPlaylist(self, url_playlist) :                
         playlist = Playlist(url_playlist)
@@ -64,18 +67,21 @@ class Download:
         except:
             print("playlist invalida")
 
-    def baixarAudio(self, url_video):                
-        yt = YouTube(url_video)     
-        self.pb.value = 0  
-        self.page.update()    
-        yt.register_on_progress_callback(self.progress_callback)
-        yt.register_on_complete_callback(self.complete_callback)    
-        self.audio = yt.streams.filter(only_audio=True).first()
-        out_file = self.audio.download(output_path='audio')        
-        base, ext = os.path.splitext(out_file)
-        new_file = base + '.mp3'
-        os.rename(out_file, new_file)
-        return new_file
+    def baixarAudio(self, url_video):   
+        try:             
+            yt = YouTube(url_video)     
+            self.pb.value = 0  
+            self.page.update()    
+            yt.register_on_progress_callback(self.progress_callback)
+            yt.register_on_complete_callback(self.complete_callback)    
+            self.audio = yt.streams.filter(only_audio=True).first()
+            out_file = self.audio.download(output_path='audio')        
+            base, ext = os.path.splitext(out_file)
+            new_file = base + '.mp3'
+            os.rename(out_file, new_file)
+            return new_file
+        except:
+            print("url invalida")
 
     def gerarLinksMarkdown(self, url_playlist):
         f = open("playlist.md", "w")

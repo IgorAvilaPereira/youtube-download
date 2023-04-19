@@ -80,9 +80,9 @@ def main(page):
         download.pb = pb
         download.baixarVideo(url_video)
         # page.add(ft.Checkbox(label=new_video.value))
-        # new_video.value = ""
-        # new_video.focus()
-        # new_video.update()
+        new_video.value  = "Download Completed"
+        new_video.focus()
+        new_video.update()
         # except:
         #   print("incorrect url!")
     
@@ -99,9 +99,9 @@ def main(page):
         download.pb = pb
         download.baixarPlaylist(url_playlist)
         # page.add(ft.Checkbox(label=new_playlist.value))
-        # new_playlist.value = ""
-        # new_playlist.focus()
-        # new_playlist.update()
+        new_playlist.value =  "Download Completed"
+        new_playlist.focus()
+        new_playlist.update()
         # except:
         # print("incorrect url!")
 
@@ -117,9 +117,9 @@ def main(page):
         download.page = page
         download.pb = pb
         download.gerarLinksMarkdown(url_playlist)
-        # new_playlist.value = ""
-        # new_playlist.focus()
-        # new_playlist.update()
+        new_playlist.value = "Download Completed"
+        new_playlist.focus()
+        new_playlist.update()
         # except:
         #   print("incorrect url!")
 
