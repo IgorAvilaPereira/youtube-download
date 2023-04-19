@@ -50,16 +50,19 @@ class Download:
         self.page.update() 
         caixaTexto = ft.Text("", size=10)
         self.page.add(caixaTexto)
-        for url_video in playlist:
-            yt = YouTube(url_video)
-            caixaTexto.value = url_video
-            self.page.update()
-            self.pb.value = 0 
-            self.page.update()
-            yt.register_on_progress_callback(self.progress_callback)
-            yt.register_on_complete_callback(self.complete_callback)    
-            self.video = yt.streams.get_highest_resolution()
-            self.video.download(output_path='playlist')
+        try:
+            for url_video in playlist:
+                yt = YouTube(url_video)
+                caixaTexto.value = url_video
+                self.page.update()
+                self.pb.value = 0 
+                self.page.update()
+                yt.register_on_progress_callback(self.progress_callback)
+                yt.register_on_complete_callback(self.complete_callback)    
+                self.video = yt.streams.get_highest_resolution()
+                self.video.download(output_path='playlist')
+        except:
+            print("playlist invalida")
 
     def baixarAudio(self, url_video):                
         yt = YouTube(url_video)     
