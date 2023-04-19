@@ -135,9 +135,9 @@ def main(page):
         download.pb = pb
         download.baixarAudio(url_audio)
         # page.add(ft.Checkbox(label=new_video.value))
-        # new_video.value = ""
-        # new_video.focus()
-        # new_video.update()
+        new_video.value = "Download Completed"
+        new_video.focus()
+        new_video.update()
 
     # bug
     # def export_to_text(e):

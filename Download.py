@@ -33,7 +33,7 @@ class Download:
         self.page.update()
         # self.page.add(ft.Text("Download Completed", size=10))
         # self.page.update()
-        return "100%"
+        return True
 
     def baixarVideo(self, url_video):
         try:
