@@ -7,6 +7,8 @@ import subprocess
 from os import path
 # import time
 from time import sleep
+# import flet as ft
+
 
 # pytube.request.default_range_size = 1048576 
 
@@ -26,7 +28,7 @@ class Download:
 
     def complete_callback(self, stream, file_handle):
         print("Download Completed")
-        self.pb.value = 1        
+        self.pb.value = 1
         self.page.update()
         # self.page.add(ft.Text("Download Completed", size=10))
         # self.page.update()

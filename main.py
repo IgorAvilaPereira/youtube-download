@@ -33,11 +33,12 @@ from time import sleep
 #                 print('Desculpe.. execute novamente...')
 
 def main(page):
-    # page.window_title = "Youtube Downloader "
-    page.window_width = 600        # window's width is 200 px
-    page.window_height = 600      # window's height is 200 px
+    # page.window_title = "Youtube Downloader"
+    page.title = "My Youtube Downloader"    
+    # page.window_width = 800        
+    # page.window_height = 700     
     page.window_resizable = False  # window is not resizable
-    pb = ft.ProgressBar(width=400)
+    pb = ft.ProgressBar(width=200)
     pb.value = 0
     page.update()
 
@@ -118,7 +119,7 @@ def main(page):
 
 
     def add_new_audio(e):
-        url_audio = new_audio.value
+        url_audio = new_video.value
         download = Download()
         pb.value = 0 
         page.update()
@@ -126,9 +127,9 @@ def main(page):
         download.pb = pb
         download.baixarAudio(url_audio)
         # page.add(ft.Checkbox(label=new_video.value))
-        new_audio.value = ""
-        new_audio.focus()
-        new_audio.update()
+        new_video.value = ""
+        new_video.focus()
+        new_video.update()
 
     # bug
     # def export_to_text(e):
@@ -151,24 +152,31 @@ def main(page):
     #     audioToText = AudioToText(file)
     #     print(audioToText.text)
 
-    new_video = ft.TextField(hint_text="Youtube Video URL?", width=200)
-    page.add(ft.Row([new_video, ft.ElevatedButton("Download Video", on_click=add_new_video)]))
+    # dlg = ft.AlertDialog(
+    #     title=ft.Text("Download Completed"), on_dismiss=lambda e: print("Dialog dismissed!")
+    # )
 
-    new_playlist = ft.TextField(hint_text="Youtube Playlist URL?", width=200)
-    page.add(ft.Row([new_playlist, ft.ElevatedButton("Download Playlist", on_click=add_new_playlist), ft.ElevatedButton("Export Playlist to Markdown", on_click=export_playlist)]))
+    # def open_dlg(e):
+    #     page.dialog = dlg
+    #     dlg.open = True
+    #     page.update()
 
-    new_audio = ft.TextField(hint_text="Youtube Video URL?", width=200)
-    # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.ElevatedButton("Export Video to Text (Pt-br)", on_click=export_to_text)]))
-    page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio)]))
-
-    page.add(ft.FilledButton(text="Open Video Folder", on_click=open_video_folder), 
-        ft.FilledButton(text="Open Playlist Folder", on_click=open_playlist_folder),
-        ft.FilledButton(text="Open Audio Folder", on_click=open_audio_folder)
-    )
-    
+    text = ft.Text("Progress...")    
     page.add(        
-        ft.Column([ ft.Text("Progress..."), pb])        
+        ft.Column([text, pb])        
     )
+
+    new_video = ft.TextField(hint_text="Youtube Video URL?", width=400)
+    page.add(ft.Row([new_video, ft.ElevatedButton("Download Video", on_click=add_new_video), ft.FilledButton(text="Open Video Folder", on_click=open_video_folder), ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.FilledButton(text="Open Audio Folder", on_click=open_audio_folder)]))
+
+    new_playlist = ft.TextField(hint_text="Youtube Playlist URL?", width=400)
+    page.add(ft.Row([new_playlist, ft.ElevatedButton("Download Playlist", on_click=add_new_playlist), ft.ElevatedButton("Export Playlist to Markdown", on_click=export_playlist), ft.FilledButton(text="Open Playlist Folder", on_click=open_playlist_folder)]))
+
+    # new_audio = ft.TextField(hint_text="Youtube Video URL?", width=400)
+    # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.ElevatedButton("Export Video to Text (Pt-br)", on_click=export_to_text)]))
+    # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.FilledButton(text="Open Audio Folder", on_click=open_audio_folder)]))
+    
+    
     
 
 ft.app(target=main)
