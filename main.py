@@ -72,17 +72,17 @@ def main(page):
     def add_new_video(e):
         url_video = new_video.value
         download = Download()        
-        text.value = "Progress..."        
+        # text.value = "Progress..."        
         pb.value = 0 
         page.update()
-        download.text = text
+        # download.text = text
         download.page = page
         download.pb = pb
         download.baixarVideo(url_video)
         # page.add(ft.Checkbox(label=new_video.value))
-        new_video.value = ""
-        new_video.focus()
-        new_video.update()
+        # new_video.value = ""
+        # new_video.focus()
+        # new_video.update()
         # except:
         #   print("incorrect url!")
     
@@ -94,14 +94,14 @@ def main(page):
         # text.value = "Progress..."        
         pb.value = 0 
         page.update()
-        download.text = text
+        # download.text = text
         download.page = page
         download.pb = pb
         download.baixarPlaylist(url_playlist)
         # page.add(ft.Checkbox(label=new_playlist.value))
-        new_playlist.value = ""
-        new_playlist.focus()
-        new_playlist.update()
+        # new_playlist.value = ""
+        # new_playlist.focus()
+        # new_playlist.update()
         # except:
         # print("incorrect url!")
 
@@ -117,9 +117,9 @@ def main(page):
         download.page = page
         download.pb = pb
         download.gerarLinksMarkdown(url_playlist)
-        new_playlist.value = ""
-        new_playlist.focus()
-        new_playlist.update()
+        # new_playlist.value = ""
+        # new_playlist.focus()
+        # new_playlist.update()
         # except:
         #   print("incorrect url!")
 
@@ -135,9 +135,9 @@ def main(page):
         download.pb = pb
         download.baixarAudio(url_audio)
         # page.add(ft.Checkbox(label=new_video.value))
-        new_video.value = ""
-        new_video.focus()
-        new_video.update()
+        # new_video.value = ""
+        # new_video.focus()
+        # new_video.update()
 
     # bug
     # def export_to_text(e):

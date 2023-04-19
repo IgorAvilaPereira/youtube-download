@@ -36,7 +36,9 @@ class Download:
         return "100%"
 
     def baixarVideo(self, url_video):
-        yt = YouTube(url_video)                
+        yt = YouTube(url_video)     
+        self.pb.value = 0  
+        self.page.update()         
         yt.register_on_progress_callback(self.progress_callback)
         yt.register_on_complete_callback(self.complete_callback)    
         self.video = yt.streams.get_highest_resolution()        
@@ -44,6 +46,8 @@ class Download:
 
     def baixarPlaylist(self, url_playlist) :                
         playlist = Playlist(url_playlist)
+        self.pb.value = 0  
+        self.page.update() 
         caixaTexto = ft.Text("", size=10)
         self.page.add(caixaTexto)
         for url_video in playlist:
@@ -58,7 +62,9 @@ class Download:
             self.video.download(output_path='playlist')
 
     def baixarAudio(self, url_video):                
-        yt = YouTube(url_video)        
+        yt = YouTube(url_video)     
+        self.pb.value = 0  
+        self.page.update()    
         yt.register_on_progress_callback(self.progress_callback)
         yt.register_on_complete_callback(self.complete_callback)    
         self.audio = yt.streams.filter(only_audio=True).first()
@@ -72,6 +78,8 @@ class Download:
         f = open("playlist.md", "w")
         conteudo = ""     
         playlist = Playlist(url_playlist)
+        self.pb.value = 0  
+        self.page.update() 
         conteudo = "# Videos - "+playlist.title+"\n\n"
         conteudo = conteudo + "* [Playlist]("+url_playlist+")\n\n"
         for url_video in playlist:
