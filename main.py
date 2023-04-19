@@ -91,7 +91,7 @@ def main(page):
         # try: 
             # if (not url_playlist and len(url_playlist) > 0):
         download = Download()
-        text.value = "Progress..."        
+        # text.value = "Progress..."        
         pb.value = 0 
         page.update()
         download.text = text
