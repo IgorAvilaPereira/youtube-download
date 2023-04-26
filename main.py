@@ -72,34 +72,32 @@ def main(page):
     def add_new_video(e):
         url_video = new_video.value
         download = Download()        
-        # text.value = "Progress..."        
+        text.value = "Waiting..."        
         pb.value = 0 
         page.update()
-        # download.text = text
         download.page = page
         download.pb = pb
+        download.text = text
         download.baixarVideo(url_video)
         # page.add(ft.Checkbox(label=new_video.value))
-        new_video.value  = "Download Completed"
+        # new_video.value  = "Download Completed"
         new_video.focus()
         new_video.update()
         # except:
         #   print("incorrect url!")
     
     def add_new_playlist(e):
-        url_playlist = new_playlist.value       
-        # try: 
-            # if (not url_playlist and len(url_playlist) > 0):
+        url_playlist = new_playlist.value
         download = Download()
-        # text.value = "Progress..."        
+        text.value = "Waiting..."        
         pb.value = 0 
         page.update()
-        # download.text = text
         download.page = page
         download.pb = pb
+        download.text = text
         download.baixarPlaylist(url_playlist)
         # page.add(ft.Checkbox(label=new_playlist.value))
-        new_playlist.value =  "Download Completed"
+        # new_playlist.value =  "Download Completed"
         new_playlist.focus()
         new_playlist.update()
         # except:
@@ -107,17 +105,15 @@ def main(page):
 
     def export_playlist(e):
         url_playlist = new_playlist.value
-        # try: 
-            # if (not url_playlist and len(url_playlist) > 0):
         download = Download()
-        # text.value = "Progress..."        
+        text.value = "Waiting..."           
         pb.value = 0 
         page.update()
-        # download.text = text
         download.page = page
         download.pb = pb
+        download.text = text
         download.gerarLinksMarkdown(url_playlist)
-        new_playlist.value = "Download Completed"
+        # new_playlist.value = "Download Completed"
         new_playlist.focus()
         new_playlist.update()
         # except:
@@ -126,16 +122,16 @@ def main(page):
 
     def add_new_audio(e):
         url_audio = new_video.value
-        # text.value = "Progress..."        
         download = Download()
+        text.value = "Waiting..."                
         pb.value = 0 
         page.update()
-        # download.text = text
         download.page = page
         download.pb = pb
+        download.text = text
         download.baixarAudio(url_audio)
         # page.add(ft.Checkbox(label=new_video.value))
-        new_video.value = "Download Completed"
+        # new_video.value = "Download Completed"
         new_video.focus()
         new_video.update()
 

@@ -14,6 +14,11 @@ from time import sleep
 
 class Download:
 
+    # def __init__(self):
+    #     self.text.value = "Progress..."
+    #     self.pb.value = 0
+    #     self.page.update()
+
     def progress_callback(self, stream, chunk, bytes_remaining):
         try:
             size = self.video.filesize        
@@ -28,7 +33,7 @@ class Download:
 
     def complete_callback(self, stream, file_handle):
         print("Download Completed")
-        # self.text.value = "Download Completed"
+        self.text.value = "Download Completed"
         self.pb.value = 1
         self.page.update()
         # self.page.add(ft.Text("Download Completed", size=10))
