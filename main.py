@@ -36,7 +36,7 @@ def main(page):
     # page.window_title = "Youtube Downloader"
     page.title = "My Youtube Downloader"    
     # page.window_width = 800        
-    # page.window_height = 700     
+    # page.window_height = 800     
     page.window_resizable = False  # window is not resizable
     pb = ft.ProgressBar(width=200)
     pb.value = 0
