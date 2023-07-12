@@ -42,15 +42,15 @@ class Download:
 
     def baixarVideo(self, url_video):
         try:
-            yt = YouTube(url_video)     
+            yt = YouTube(url_video,use_oauth=True, allow_oauth_cache=True) 
             self.pb.value = 0  
             self.page.update()         
             yt.register_on_progress_callback(self.progress_callback)
             yt.register_on_complete_callback(self.complete_callback)    
             self.video = yt.streams.get_highest_resolution()        
             self.video.download(output_path='video')
-        except:
-            print("url invalida")
+        except Exception as ex:
+            print(repr(ex))
 
     def baixarPlaylist(self, url_playlist) :                
         playlist = Playlist(url_playlist)

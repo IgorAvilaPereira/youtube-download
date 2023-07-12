@@ -206,6 +206,7 @@ def main(page):
         multiline=True,
         min_lines=10
     )
+    
     page.add(ft.Row([new_multiple_video, ft.ElevatedButton("Download Multiple Video", on_click=add_multiple_new_video)]))
    
     
