@@ -201,12 +201,12 @@ def main(page):
     # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.ElevatedButton("Export Video to Text (Pt-br)", on_click=export_to_text)]))
     # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.FilledButton(text="Open Audio Folder", on_click=open_audio_folder)]))
     
-    # new_multiple_video = ft.TextField(
-    #     label="Links",
-    #     multiline=True,
-    #     min_lines=10
-    # )
-    # page.add(ft.Row([new_multiple_video, ft.ElevatedButton("Download Multiple Video", on_click=add_multiple_new_video)]))
+    new_multiple_video = ft.TextField(
+        label="Links",
+        multiline=True,
+        min_lines=10
+    )
+    page.add(ft.Row([new_multiple_video, ft.ElevatedButton("Download Multiple Video", on_click=add_multiple_new_video)]))
    
     
     
