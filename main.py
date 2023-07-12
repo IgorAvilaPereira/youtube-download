@@ -68,6 +68,26 @@ def main(page):
             subprocess.Popen(["open", path])
         else:
             subprocess.Popen(["xdg-open", path])
+    
+    def add_multiple_new_video(e):
+        vet_url_video = new_multiple_video.value.strip().split("\n")
+        # print(vet_url_video)
+        # exit(0)
+        download = Download()     
+        for url_video in vet_url_video:               
+            # text.value = "Waiting..."        
+            # pb.value = 0 
+            # page.update()
+            # download.page = page
+            # download.pb = pb
+            # download.text = text
+            download.baixarVideo(url_video)
+            # # page.add(ft.Checkbox(label=new_video.value))
+            # # new_video.value  = "Download Completed"
+            # new_video.focus()
+            # new_video.update()
+            # except:
+            #   print("incorrect url!")
 
     def add_new_video(e):
         url_video = new_video.value
@@ -181,6 +201,13 @@ def main(page):
     # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.ElevatedButton("Export Video to Text (Pt-br)", on_click=export_to_text)]))
     # page.add(ft.Row([new_audio, ft.ElevatedButton("Download Audio", on_click=add_new_audio), ft.FilledButton(text="Open Audio Folder", on_click=open_audio_folder)]))
     
+    new_multiple_video = ft.TextField(
+        label="Links",
+        multiline=True,
+        min_lines=10
+    )
+    page.add(ft.Row([new_multiple_video, ft.ElevatedButton("Download Multiple Video", on_click=add_multiple_new_video)]))
+   
     
     
 
